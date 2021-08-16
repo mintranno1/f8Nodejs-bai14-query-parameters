@@ -10,7 +10,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 var morgan = require('morgan');
 
 // HTTP logger
-app.use(morgan('combined'));
+// app.use(morgan('combined'));
 
 // Template engine
 app.engine('hbs', handlebars({
@@ -28,6 +28,11 @@ app.get('/', (req, res) => {
 app.get('/news', (req, res) => {
     res.render('news');
 });
+app.get('/search', (req, res) => {
+    // http://localhost:8000/search?q=mintran&ref=aing&author=thuy
+    console.log(req.query.q);
+    res.render('search');
+})
 
 
 app.listen(port, () => console.log(`Example app listening at http://localhost: ${port}`))
